@@ -16,5 +16,6 @@ RUN docling-tools models download-hf-repo ds4sd/SmolDocling-256M-preview || true
 # Copy your serverless handler script into the container
 COPY handler.py /handler.py
 
+ENTRYPOINT []
 # Set the entrypoint to start the RunPod serverless worker
 CMD [ "python", "-u", "/handler.py" ]
