@@ -13,8 +13,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --no-cache-dir --upgrade pip
 
 # 3. Split installations to prevent Out-Of-Memory (OOM) kills during build
-RUN pip install --no-cache-dir runpod transformers accelerate
-RUN pip install --no-cache-dir docling docling-tools
+RUN pip install --no-cache-dir runpod docling transformers accelerate
 
 # Pre-fetch the SmolDocling model to minimize cold start latency
 RUN docling-tools models download-hf-repo ds4sd/SmolDocling-256M-preview || true
