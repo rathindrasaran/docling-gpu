@@ -17,11 +17,10 @@ pipeline_options.accelerator_options = AcceleratorOptions(
     device="cuda" 
 )
 
-try:
-    from docling.datamodel import vlm_model_specs
-    pipeline_options.vlm_options = vlm_model_specs.SMOLDOCLING
-except ImportError:
-    pipeline_options.vlm_options.repo_id = "ds4sd/SmolDocling-256M-preview"
+from docling.datamodel import vlm_model_specs
+
+# Explicitly assign the Transformers backend for NVIDIA CUDA execution
+pipeline_options.vlm_options = vlm_model_specs.SMOLDOCLING_TRANSFORMERS
 
 # Initialize globally to cache in VRAM
 doc_converter = DocumentConverter(
